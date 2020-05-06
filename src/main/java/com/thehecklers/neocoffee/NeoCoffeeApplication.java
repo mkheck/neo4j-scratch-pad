@@ -2,6 +2,7 @@ package com.thehecklers.neocoffee;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+import lombok.extern.java.Log;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
@@ -33,6 +34,7 @@ public class NeoCoffeeApplication {
 
 }
 
+//@Log
 @Component
 class DataLoader {
     private final CoffeeDrinkRepo cdRepo;
@@ -73,10 +75,18 @@ class DataLoader {
         System.out.println("--- Drinks ---");
         cdRepo.findAll().forEach(System.out::println);
 
-        System.out.println();
-
         System.out.println("--- Shops ---");
         csRepo.findAll().forEach(System.out::println);
+
+/*
+        log.info("--- Drinks ---");
+        cdRepo.findAll().forEach(drink -> log.info(drink.toString()));
+
+        log.info("");
+
+        log.info("--- Shops ---");
+        csRepo.findAll().forEach(shop -> log.info(shop.toString()));
+*/
     }
 }
 
